@@ -2,14 +2,19 @@
 Repository to maintain source code for tic-tac-toe game - this teaches all the concepts in Python.
 Have fun with the game and learning python!!
 
-<<<<<<< HEAD
 Useful git commands
     git --version
     git init
-=======
+    git config --global user.name ""
+    git config --global user.email ""
+
+    git remote -v
+    git remote show origin
+    git remote set-url origin git+ssh://git@github.com/username/reponame.git
 
 
-  git config --global user.name ""
-  git config --global user.email ""
-  
->>>>>>> d97bf928d44ea02b1a6253b6c7693f2a444aff93
+Link on how to connect to github using ssh
+https://help.github.com/articles/connecting-to-github-with-ssh/
+then use link
+https://stackoverflow.com/questions/8588768/git-push-username-password-how-to-avoid
+to push without using password.
