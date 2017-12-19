@@ -1,28 +1,36 @@
-#######################################
-# Project Name - Tic Tac Toe Game
-# print (type(projectn))
-# Developed by : Vinay Singh
-# Date - 5/14/17
+"""
+     Tic Tac Toe Game
+
+     A game to learn python.
+
+"""
 import sys
 import os
 import logging
 import webbrowser
 import datetime
 import re
-projectn = 'Tic Tac Toe Game'
+
+__version__ = "1.0"
+__author__ = "Vinay Singh"
+
 #######################################
 # print(webbrowser._browsers)
-# global variable init
+
+# global variable initialization
 ttt_board = dict.fromkeys(["tl", "tm", "tr", "ml", "mm", "mr", "ll", "lm", "lr"], " ")
 player = None
 avail_key = ''
 continue_playing = True
+
 #####################
+
+
 logging.basicConfig(level=logging.DEBUG, format='%(asctime)s - %(levelname)s - %(message)s')
 logging.debug('Tic Tac Toe Program Started')
 now = datetime.datetime.now()
 # print (now)
-print("Welcome to : {} . Today's is {:%m/%d/%Y}. ".format(projectn, now ))
+print("Welcome to : {} . Today's is {:%m/%d/%Y}. ".format(__name__, now ))
 pwd=input('Your password ( Hint : is your Birth Year):')
 while re.match(r'^\d+$',pwd)==None :
     print('Please enter numeric year')
