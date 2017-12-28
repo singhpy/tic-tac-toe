@@ -1,0 +1,155 @@
+options
+        re.S
+        re.DOTALL         .
+        re.M
+        re.MULTILINE      ^     $
+        re.A
+        re.ASCII
+        re.I
+        re.IGNORECASE
+        re.X
+        re.VERBOSE
+
+        re.DEBUG
+
+
+The re Pattern-Matching Module
+The re module is the standard regular expression-matching interface. Regular expression (RE) patterns are specified as strings. This module must be imported.
+Module Functions
+compile(pattern [, flags])
+Compile an RE pattern string into a regular expression object, for later matching. flags (combinable by bitwise | operator) include the following available at the top-level of the re module:
+A or ASCII or (?a)
+Makes \w, \W, \b, \B, \s, and \S perform ASCII-only matching instead of full Unicode matching. This is only meaningful for Unicode patterns and is ignored for byte patterns. Note that for backward compatibility, the re.U flag still exists (as well as its synonym re.UNICODE and its embedded counterpart, ?u), but these are redundant in Python 3.0 since matches are Unicode by default for strings (and Unicode matching isn’t allowed for bytes).
+I or IGNORECASE or (?i)
+Case-insensitive matching.
+L or LOCALE or (?L)
+Makes \w, \W, \b, \B, \s, \S, \d, and \D dependent on the current locale (default is Unicode for Python 3).
+M or MULTILINE or (?m)
+Matches to each newline, not whole string.
+S or DOTALL or (?s)
+. matches all characters, including newline.
+U or UNICODE or (?u)
+Makes \w, \W, \b, \B, \s, \S, \d, and \D dependent on Unicode character properties (new in version 2.0, and superfluous in Python 3).
+X or VERBOSE or (?x)
+Ignores whitespace in the pattern, outside character sets.
+match(pattern, string [, flags])
+If zero or more characters at start of string match the pattern string, returns a corresponding MatchObject instance, or None if no match. flags as in compile.
+search(pattern, string [, flags])
+Scans through string for a location matching pattern; returns a corresponding MatchObject instance, or None if no match. flags as in compile.
+split(pattern, string [, maxsplit=0])
+Splits string by occurrences of pattern. If capturing () are used in pattern, occurrences of patterns or subpatterns are also returned.
+sub(pattern, repl, string [, count=0])
+Returns string obtained by replacing the (first count) leftmost nonoverlapping occurrences of pattern (a string or an RE object) in string by repl. repl can be a string or a function called with a single MatchObject argument, which must return the replacement string. repl can also include sequence escapes \1, \2, etc., to use substrings that match groups, or \0 for all.
+subn(pattern, repl, string [, count=0])
+Same as sub but returns a tuple (new-string, number-of-subs-made).
+findall(pattern, string [, flags])
+Returns a list of strings giving all nonoverlapping matches of pattern in string. If one or more groups are present in the pattern, returns a list of groups.
+finditer(pattern, string [, flags])
+Returns an iterator over all nonoverlapping matches for the RE pattern in string (match objects).
+escape(string)
+Returns string with all nonalphanumeric characters backslashed, such that they can be compiled as a string literal.
+Regular Expression Objects
+RE objects are returned by the re.compile function and have the following attributes:
+flags
+The flags argument used when the RE object was compiled.
+groupindex
+Dictionary of {group-name: group-number} in the pattern.
+pattern
+The pattern string from which the RE object was compiled.
+match(string [, pos [, endpos]])
+search(string [, pos [, endpos]])
+split(string [, maxsplit=0])
+sub(repl, string [, count=0])
+subn(repl, string [, count=0])
+findall(string [, pos[, endpos]])
+finditer(string [, pos[, endpos]])
+Same as earlier re module functions, but pattern is implied, and pos and endpos give start/end string indexes for the match.
+Match Objects
+Match objects are returned by successful match and search operations, and have the following attributes (see the Python Library Reference for additional attributes omitted here).
+pos, endpos
+Values of pos and endpos passed to search or match.
+re
+RE object whose match or search produced this.
+string
+String passed to match or search.
+group([g1, g2,...])
+Returns substrings that were matched by parenthesized groups in the pattern. Accepts zero or more group numbers. If one argument, result is the substring that matched the group whose number is passed. If multiple arguments, result is a tuple with one matched substring per argument. If no arguments, returns entire matching substring. If any group number is 0, return value is entire matching string; otherwise, returns string matching corresponding parenthesized group number in pattern (1...N, from left to right). Group number arguments can also be group names.
+groups()
+Returns a tuple of all groups of the match; groups not participating in the match have a value of None.
+groupdict()
+Returns a dictionary containing all the named subgroups of the match, keyed by the subgroup name.
+start([group]), end([group])
+Indexes of start and end of substring matched by group (or entire matched string, if no group). If match object M, M.string[M.start(g):M.end(g)]==M.group(g).
+span([group])
+Returns the tuple (start(group), end(group)).
+expand(template)
+Returns the string obtained by doing backslash substitution on the template string template, as done by the sub method. Escapes such as \n are converted to the appropriate characters, and numeric back-references (\1, \2) and named back-references (\g<1>, \g<name>) are replaced by the corresponding group.
+Pattern Syntax
+Pattern strings are specified by concatenating forms (see Table 1-19), as well as by character class escapes (see Table 1-20). Python character escapes (e.g., \t for tab) can also appear. Pattern strings are matched against text strings, yielding a Boolean match result, as well as grouped substrings matched by subpatterns in parentheses:
+>>> import re
+>>> patt = re.compile('hello[ \t]*(.*)')
+>>> mobj = patt.match('hello  world!')
+>>> mobj.group(1)
+'world!'
+In Table 1-19, C is any character, R is any regular expression form in the left column of the table, and m and n are integers. Each form usually consumes as much of the string being matched as possible, except for the nongreedy forms (which consume as little as possible, as long as the entire pattern still matches the target string).
+Table 1-19. Regular expression pattern syntax
+
+
+Form
+Description
+.                           Matches any character (including newline if DOTALL flag is specified).
+^                           Matches start of string (of every line in MULTILINE mode).
+$                           Matches end of string (of every line in MULTILINE mode).
+C                           Any nonspecial character matches itself.
+R*                          Zero or more occurrences of preceding regular expression R (as many as possible).
+R+                          One or more occurrences of preceding regular expression R (as many as possible).
+R?                          Zero or one occurrence of preceding regular expression R.
+R{m}                        Matches exactly m repetitions of preceding regular expression R.
+R{m,n}                      Matches from m to n repetitions of preceding regular expression R.
+R*?, R+?, R??, R{m,n}?      Same as *, +, and ?, but matches as few characters/times as possible; nongreedy.
+[...]                       Defines character set; e.g., [a-zA-Z] matches all letters (also see Table 1-20).
+[^...]                      Defines complemented character set: matches if character is not in set.
+\                           Escapes special characters (e.g., *?+|()) and introduces special sequences (see Table 1-20). Due to Python rules, write as \\ or r'\\'.
+\\                          Matches a literal \; due to Python string rules, write as \\\\ in pattern, or r'\\'.
+\number                     Matches the contents of the group of the same number: (.+) \1 matches “42 42”
+R|R                         Alternative: matches left or right R.
+RR
+Concatenation: matches both Rs.
+(R)
+Matches any RE inside (), and delimits a group (retains matched substring).
+(?: R)
+Same as (R) but doesn’t delimit a group.
+(?= R)
+Look-ahead assertion: matches if R matches next, but doesn’t consume any of the string (e.g., X (?=Y) matches X if followed by Y).
+(?! R)
+Negative look-ahead assertion: matches if R doesn’t match next. Negative of (?=R).
+(?P<name> R)
+Matches any RE inside () and delimits a named group (e.g., r'(?P<id>[a-zA-Z_]\ w*)' defines a group named id).
+(?P=name)
+Matches whatever text was matched by the earlier group named name.
+(?#...)
+A comment; ignored.
+(?letter)
+letter is one of a, i, L, m, s, x, or u. Set flag (re.A, re.I, re.L, etc.) for entire RE.
+(?<= R)
+Positive look-behind assertion: matches if preceded by a match of fixed-width R.
+(?<! R)
+Negative look-behind assertion: matches if not preceded by a match of fixed-width R.
+(?(id/name)yespattern|nopattern)
+Will try to match with yespattern if the group with given id or name exists, else with optional nopattern.
+In Table 1-20, \b, \B, \d, \D, \s, \S, \w, and \W behave differently depending on flags, and defaults to Unicode in Python 3.0, unless ASCII (?a) is used. Tip: use raw strings (r'\n') to literalize backslashes in Table 1-20 class escapes.
+Table 1-20. Regular expression pattern special sequences
+
+
+Sequence Description
+\number                 Matches text of the group number (from 1).
+\A                      Matches only at the start of the string.
+\b                      Empty string at word boundaries.
+\B                      Empty string not at word boundary.
+\d                      Any decimal digit (like [0–9]).
+\D                      Any nondecimal digit character (like [^0–9]).
+\s                      Any whitespace character (like [ \t\n\r\f\v]).
+\S                      Any nonwhitespace character (like [^ \t\n\r\f\v]).
+\w                      Any alphanumeric character.
+\W                      Any nonalphanumeric character.
+\Z                      Matches only at the end of the string.

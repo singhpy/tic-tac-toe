@@ -1,0 +1,476 @@
+
+builtins_list
+                abs
+                all
+                any
+                callable
+                bool
+                chr
+                @classmethod", "setattr", "delattr", "dict",
+                 "enumerate", "eval", "exec", "filter", "float", "format", "getattr", "hasattr", "globals",
+                 "", "list", "help", "id", "input", "int", "isinstance", "issubclass", "iter", "len", "map", "max",
+                 "min", ""
+                 "ascii", "bin", "bytes", "bytearray","compile", "complex", "hash", "hex", "round"]
+
+math
+    .floor
+    .ceil
+    .sqrt
+    .trunc
+
+system
+sys
+    .setrecursionlimit()
+    .getrecursionlimit()
+    .
+
+os
+                .path
+    .mkdir()
+    .getcwd()
+
+
+decimal
+        .Decimal
+
+fractions
+         .Fractions
+
+collections.abc
+                .MutableSequence
+                .Generator
+                .Sequence
+
+keyword
+        .iskeyword()
+        .kwlist
+
+pdb
+
+string
+        constants
+                    ascii_letters
+                    ascii_lowercase
+                    ascii_uppercase
+                    punctuation
+                    whitespace
+                    printable
+                    digits
+        Formatter
+                    format(format_string,*args,**kwargs)
+                        vformat
+                            parse
+
+re
+    compile()
+    match()
+    search()
+    fullmatch()
+    split()
+    findall()
+    finditer()
+
+
+textwrap
+           TextWrapper(**kwargs)
+                                initial_indent
+                                width
+                                expand_tabs
+                                tabsize
+                                replace_whitespace
+                                max_lines
+                                ...
+                                ...
+        wrap(text, width = 70, **kwargs)
+        fill(text, width = 70, **kwargs)
+        shorten()
+        dedent()
+        indent()
+
+datetime
+        naive
+        aware
+            tzinfo - optional time zone information attribute
+        timezone - class
+        MINYEAR
+        MAXYEAR
+
+            date            year/month/date        ValueError                                           naive object
+                .today()
+                .fromtimestamp(time.time())
+                .fromtimestamp(timestamp)
+                .min
+                .max
+                .resolution
+                .year
+                .month
+                .day
+                .replace()
+                .timetuple()
+                .weekday()
+                .isoweekday()
+                .isocalendar()
+                .ctime()
+                .strftime()
+                .__str__()
+                .__format__()
+
+                datetime        year/month/date/hour/minute/second/microsecond/tzinfo
+            time            /hour/minute/second/microsecond/tzinfo
+            timedelta       diff between two date or time or datetime to microsecond resolution
+                    min
+                    max
+                    resolution
+
+                    days
+                    seconds
+                    microseconds
+
+
+            tzinfo          abstract class
+                timezone        class implements tzinfo
+
+time
+calendar
+
+bisect
+        .bisect_left(x,a,lo=0,hi=len(a)) - returns a position
+        .bisect_right(x,a,lo=0,hi=len(a))
+        .bisect(x,a,lo=0,hi=len(a)) - same as right
+        .insort_left(a,x,lo=0,hi=len(a)) - insert the item
+        .insort_right(a,x,lo=0,hi=len(a)) - insert the item
+        .insort(a,x,lo=0,hi=len(a)) - insert the item
+
+enum
+    Enum
+    IntEnum
+
+
+numbers
+
+decimal
+
+math
+    .ceil(x)
+    .copysign(x,y)
+    .fabs(x)
+    .factorial(x)
+    .floor(x)
+    .fmod(x.y)
+    .frexp(x)
+    .fsum(iterable)
+    .gcd(x,y)
+    .isclose(a,b,rel_tol=1e-09,abs_tol=0.0)
+    .isNan(x) - not a number
+    .isfinite(x)
+    .isinf(x)
+    .trunc(x)
+    .exp(x)
+    .pow(x,y)
+    .sqrt(x)
+    trignometric functions
+    angular conversion
+    hyperbolic function
+    constants
+        .pi
+        .e
+        .tau
+        .inf
+        .nan
+
+cmath
+
+itertools
+            .cycle('ABCD')
+            .count(10,1) - no stopping to these three
+            .repeat(10,3)
+
+            .accumulate(iterable,func=operator.add) -
+            .chain(*iterables)
+            .chain.from_iterable(iterable)
+            .combination(iterable,r)
+            .compress()
+            .dropwhile(predicate,iterable)
+            .filterfalse(predicate,iterable)
+
+operator
+        .mul
+        .sub
+        .add
+        .truth
+        .iadd --> in place addition +=
+
+pathlib
+        object oriented to deal with path
+        path = .Path(filename)
+        path.exists()
+        path.is_file()
+
+
+os.path
+        .abspath(path)
+        .basename(path)
+        .commonpath(paths)
+        .commonprefix(list) -- uses character by character comparison
+        .dirname(path)
+        .exists(path) - must be able to run os.stat() then only it returns True
+        .lexists(path)
+        .expanduser(path)
+        .getatime(path)
+        .getmtime(path)
+        .getctime(path)
+        .getsize(path)
+        .isabs(path)
+        .isfile(path)
+        .isdir(path)
+        .islink(path)
+        .ismount(path)
+        .join(path,*paths)
+        .relpath(path,start=os.curdir)
+        .samefile(path1,path2) - device number and inode number are same then true
+        .sameopenfile(fp1,fp2)
+        .split(path) - pair ( os.path.basename, os.path.dirname) -->
+        .samestat(stat1,stat2) --> get stat using os.stat(path), os.lstat(0, os.fstat()
+        .splitdrive(path) - mountpoint, rest of the directory
+        .splitext(path) - directory:filename , file extension
+        supports_unicode_filenames --> true
+        .splitunc(path) - use splitdrive
+
+fileinput
+            use open() to open one file
+            with fileinput.input(files=('test1.txt','test2.txt')) as f:
+	            for line in f:
+                    print(line)
+                    print(" Current file name is {}".format(f.filename()))
+                    print(" Current file descriptor  is {}".format(f.fileno()))
+                    print(" overall line number is {}".format(f.lineno()))
+                    print(" Current file line no  is {}".format(f.filelineno()))
+                    print("isfirstline of this file {}".format(f.isfirstline()))
+
+
+
+
+stat - please go through it once
+
+filecmp
+        .cmp(f1,f2,shallow=True) if shallow then only compare os.stat() output else contents are compared
+        .cmpfiles(dir1,dir2, commin, shallow= True) - returns match, mismatch, errors
+        .clear_cache()
+
+        dircmp class
+                    filecmp.dircmp(a,b,ignore=none,hide=None) ignore --> filecmp.DEFAULT_IGNORES,  default hide = [os.curdir, os.pardir]
+                                                             report()
+                                                             report_partial_closure()
+                                                             report_full_closure()
+                                   left
+                                   right
+                                   left_list
+                                   right_list
+                                   common
+                                   left_only
+                                   right_only
+                                   common_dirs
+                                   common_files
+                                   common_funny
+                                   funny_files
+                                   same_files
+                                   subdirs  A dictionary mapping names in common_dirs to dircmp objects.
+
+
+
+difflib
+        .SeuenceMatcher
+        .differ
+        .HtmlDiff
+                 __init__(tabsize=8, wrapcolumn=None,linejunk=None,charjunk=IS_CHARACTER_JUNK)
+                 .make_file(fromlines,tolines,fromdesc="",todesc="",context=False,numlines=5,*,charset='utf-8')
+                 .make_table(fromlines,tolines,fromdesc="",todesc="",context=False,numlines=5)
+
+
+tempfile
+        .TemporaryFile(mode='w+b', buffering=None, encoding=None, newline=None, suffix=None, prefix=None, dir=None)                - context manager
+            dir ==>     temp dir ==> either tempfile.tempdir or gettempdir()
+            prefix ==>  tempfile.gettempprefix()
+            suffix ==>
+        .NamedTemporaryFile()           - context manager
+        .TemporaryDeirectory()          - context manager
+        .SpooledTemproraryFile(max_size=0)        - context manager
+
+        .mkstemp(suffix=None ( no suffix) , prefix=None ( gettempprefix()) , dir=None ( gettemp, text=False) -- returns (os level handle, abs path)
+        .mkdtemp()
+
+glob
+    .glob("*")
+    .glonb("*.txt")
+    .glob("*?")
+    .glob([0-9].jpg)
+
+fnmatch
+linecache
+           .getline(filename,lineno,module_globals=None)
+
+shutil
+        without opening files. copying, moving , removing
+        permission bits, last access time, last modification time, flags
+        .copy(src,dst,*,follow_symlinks=True) - copy the file itself + permission mode
+        .copy2(src,dst,*,follow_symlinks=True) _ copy the file itself + all metadata
+        .copytree(src,dst,symlinks=False,ignore=None,copy_function=copy2,ignore_dangling_symlinks=False)
+        .copyfile(src,dst,follow_symlinks=True) --> content of the file
+        .copymode(src,dst,*,follow_symlinks=True) --> only permission bits
+        .copystat(src,dst,*,follow_symlinks=True)
+        .make_archive()
+        .move(src,dst)
+        .rmtree(path, ignore_errors=False, onerror=None)
+        .copyfileobj(fsrc,fdst,[length] == buffer size)
+
+        .get_archive_formats()
+        .get_unpack_formats()
+
+        .make_archive(base_name, format[, root_dir[, base_dir[, verbose[, dry_run[, owner[, group[, logger]]]]]]])
+        .register_archive_format(name, function[, extra_args[, description]])
+        .unregister_archive_format(name)
+
+        .unpack_archive(filename[, extract_dir[, format]])
+        .register_unpack_format(name, extensions, function[, extra_args[, description]])
+        .unregister_unpack_format(name)
+
+pickle
+      .dump(obj,file,protocol=None,*,fix_imports=True)
+      .load(file,*,fix_imports=True,encoding="ASCII",errors="strict")
+      .dumps(obj,protocol=None,*,fix_imports=True)
+      .loads()
+
+      pickle.DEFAULT_PROTOCOL
+      pickle.HIGHEST_PROTOCOL
+
+
+
+shelve
+        .open(filename, flag='c', protocol=None, writeback=False) - supports context manager - Shelf Object
+
+        Shelp supports all dict methods
+        Shelf.sync()
+        Shelf.close()
+
+dbm
+
+    .__init__.py
+                >>> shelf = shelve.open("db_customer")
+                >>> shelf['vinay'] = "vinay kumar singh"
+                >>> dbm.whichdb("db_customer") - None ( if file cant be opened) "" ( if cant determine the file format)
+                'dbm.dumb'
+                .whichdb(filename)
+                .open(file,flag='r',mode=O0666) r - reading, c - reading and writing ( create if not exists) w - writing ( existing db) n - new db for reading and writing
+                .open - supports dict methods, supports context manager
+                keys and values are always stored as byte - implicitly converts to byte
+                >>> print(dbmo['1'])
+                b'one' --> prints in byte
+
+                >>> assert dbmo['2'] == 'two'
+                Traceback (most recent call last):
+                File "<pyshell#178>", line 1, in <module>
+                    assert dbmo['2'] == 'two'
+                AssertionError
+                >>> assert dbmo['2'] == b'two'
+
+    gnu.py
+            .gnu
+                .open(file,flag='r',mode=O0666)  --> additional flags - f = fast mode, s = synch mode, u = donot lock mode
+                .open_flags
+                .open - created gdbm objects
+                dict methods supported
+                gdbm.firstkey()
+                gdbm.nextkey()
+                gdbm.reorganize()
+                gdbm.sync()
+                gdbm.close()
+
+    ndbm
+
+
+
+sqlite3
+        .connect(database[, timeout=5sec, detect_types, isolation_level, check_same_thread, factory, cached_statement100, uri=False] )
+                - Connection object :memory: --> creates db in RAM
+
+        Connection.cursor() --> create cursor object using cursor() and then this can be used for SQL commands
+        cursor.execute(string_db_command)
+        Connection.commit()
+        Connection.close()
+
+        execute("CREATE TABLE ") --> TEXT, INTEGER, REAL, BLOB, NULL
+        db = sqlite3.connect('file:path/to/database?mode=ro', uri=True)
+
+        execute.(INSERT INTO <tablename> VALUES (?,?,?) , <tuple_with_3_value_ends_with_comma>)
+
+        .version --> version of the module
+        .sqlite_version --> version of the sqlite db
+
+sqlalchemy
+
+          import create_engine
+          engine = create_engine("sqlite:///some.db")
+          engine = create_engine("sqlite:////complete/path/some.db")
+          engine = create_engine("postgresql://root_db:root@localhost/some.db")
+
+          result = engine.execute("select emp_id, emp_name from "
+                                   "employee where empd_id=:emp_id", emp_id=3)
+          result.fetchone()
+          result.fetchall()
+
+          for row in result
+            print row
+
+          result.close() --< closes everything
+
+          engine.execute("insert into employee (emp_name) values (:emp_name)", emp_name="fred") --> commits auto
+          # Executing via engine is connectionless execution - engine connects and disconnects
+          # usually uses a connection pool so disconnecting means connection returned to the pool
+
+          # keep the connection alive - expilict execution
+          conn = engine.connect()
+          result = conn.execute("select")
+
+          # transactional
+          conn = engine.connect()
+          trans = conn.begin()
+          conn.execute(insert)
+          conn.execute(insert2)
+          trans.commit()
+          conn.close()
+
+          # transactional using context manager
+          with engine.begin() as conn:
+            conn.execute(insert)
+            conn.execute(update)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+functools:
+
+
+
+
+
+

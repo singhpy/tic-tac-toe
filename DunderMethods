@@ -1,0 +1,51 @@
+__eq__()
+__lt__()
+__le__()
+__gt__()
+__add__()
+__sub__()
+__copy__()
+__deepcopy__()
+
+
+__bool_()
+__len__()
+
+
+__hash__()
+
+__str__()
+__repr__()
+
+
+__missing__()
+
+
+
+__iter__()
+ins.__next__() = next(inst)
+
+
+
+
+Attributes
+            object.__dict__
+            instance.__class__
+            class.__bases__
+            definition.__name__
+            definition.__qualname__
+            class.__subclasses__
+            __debug__
+
+
+__slots__
+
+
+__ceil__()
+__floor__()
+__trunc__()
+
+__getstate__() - used in pickling
+__setstate__() - used in unpickling
+
+

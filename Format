@@ -1,0 +1,28 @@
+replacement_field ::=  "{" [field_name] ["!" conversion] [":" format_spec] "}"
+field_name        ::=  arg_name ("." attribute_name | "[" element_index "]")*
+arg_name          ::=  [identifier | integer]
+attribute_name    ::=  identifier
+element_index     ::=  integer | index_string
+index_string      ::=  <any source character except "]"> +
+conversion        ::=  "r" | "s" | "a"
+format_spec       ::=  <described in the next section>
+
+
+format_spec     ::=  [[fill]align][sign][#][0][width][grouping_option][.precision][type]
+fill            ::=  <any character>
+align           ::=  "<" | ">" | "=" | "^"
+sign            ::=  "+" | "-" | " "
+width           ::=  integer
+grouping_option ::=  "_" | ","
+precision       ::=  integer
+type            ::=  "b" | "c" | "d" | "e" | "E" | "f" | "F" | "g" | "G" | "n" | "o" | "s" | "x" | "X" | "%"
+
+
+Examples:
+            fs.format(" First name is {0:<20} & Last name is {1:>10}. Salary is {sal:$^10,} ","Vinay", "Singh", sal = 80000)
+
+            >>> import datetime
+            >>> d = datetime.datetime(2010, 7, 4, 12, 15, 58)
+            >>> '{:%Y-%m-%d %H:%M:%S}'.format(d)
+
+                '2010-07-04 12:15:58'

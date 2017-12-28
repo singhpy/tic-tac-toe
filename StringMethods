@@ -1,0 +1,51 @@
+Commonly used -
+    str.capitalize()
+    str.count(sub[, start[, end]])
+    str.encode(encoding="utf-8", errors="strict")                       - bytes object
+    str.endswith(suffix, [start, [end]])
+    str.find(substring, [start, [end]])                                 - return first position else return -1 if not found
+    str.format(*args, **kwargs)                                         - return first position else raise ValueError if not found
+    str.index(substring, [start, [end]])
+    str.isalnum
+    str.isalpha
+    str.isdecimal
+    str.isdigit
+str.isidentifier
+str.islower
+    str.isnumeric
+str.isprintable
+    str.isspace
+    str.istitle
+    str.isupper
+    str.join(iterable)
+str.ljust(width, [fillchar])
+str.lower
+str.lstrip([chars])
+str.partition
+str.replace
+str.rfind
+str.rindex
+str.rjust(width, [fillchar])
+str.rpartition
+str.rsplit
+str.rstrip
+str.split
+str.splitlines
+str.startswith
+str.strip
+str.swapcase
+str.title
+str.translate
+str.upper
+str.zfill
+
+
+
+
+
+Not so common-
+                str.casefold()¶
+                str.center(width[, fillchar])
+                str.expandtabs(tabsize=8)
+                str.format_map
+

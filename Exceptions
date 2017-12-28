@@ -1,0 +1,123 @@
+BaseException - base class for all built-in exception
+
+Exception - user defined exceptions
+
+AirthmeticError
+                OverflowError
+                ZeroDivisionError
+                FloatingPointError
+
+BufferError
+LookupError
+            IndexError
+            KeyError
+
+
+
+__context__
+__cause__
+    try
+        raise from
+    except/finally
+
+
+
+try:
+    something
+    anotherthing
+except SomeException:
+
+
+
+
+TypeError - type()
+ValueError - outside of range - chr(13412343)   str.index()
+SyntaxError - compile()
+OverflowError - outside of the range of float
+NameError - if not defined
+AttributeError - getattr(), hasattr()
+EOFError - input()
+StopIteration - iter() - next()
+NotImplementedError
+UnicodeError - srt.encode()
+
+AssertionError =
+
+
+BaseException
+ +-- SystemExit
+ +-- KeyboardInterrupt
+ +-- GeneratorExit
+ +-- Exception
+      +-- StopIteration
+      +-- StopAsyncIteration
+      +-- ArithmeticError
+      |    +-- FloatingPointError
+      |    +-- OverflowError
+      |    +-- ZeroDivisionError
+      +-- AssertionError
+      +-- AttributeError
+      +-- BufferError
+      +-- EOFError
+      +-- ImportError
+           +-- ModuleNotFoundError
+      +-- LookupError
+      |    +-- IndexError
+      |    +-- KeyError
+      +-- MemoryError
+      +-- NameError
+      |    +-- UnboundLocalError
+      +-- OSError
+      |    +-- BlockingIOError
+      |    +-- ChildProcessError
+      |    +-- ConnectionError
+      |    |    +-- BrokenPipeError
+      |    |    +-- ConnectionAbortedError
+      |    |    +-- ConnectionRefusedError
+      |    |    +-- ConnectionResetError
+      |    +-- FileExistsError
+      |    +-- FileNotFoundError
+      |    +-- InterruptedError
+      |    +-- IsADirectoryError
+      |    +-- NotADirectoryError
+      |    +-- PermissionError
+      |    +-- ProcessLookupError
+      |    +-- TimeoutError
+      +-- ReferenceError
+      +-- RuntimeError
+      |    +-- NotImplementedError
+      |    +-- RecursionError
+      +-- SyntaxError
+      |    +-- IndentationError
+      |         +-- TabError
+      +-- SystemError
+      +-- TypeError
+      +-- ValueError
+      |    +-- UnicodeError
+      |         +-- UnicodeDecodeError
+      |         +-- UnicodeEncodeError
+      |         +-- UnicodeTranslateError
+      +-- Warning
+           +-- DeprecationWarning
+           +-- PendingDeprecationWarning
+           +-- RuntimeWarning
+           +-- SyntaxWarning
+           +-- UserWarning
+           +-- FutureWarning
+           +-- ImportWarning
+           +-- UnicodeWarning
+           +-- BytesWarning
+           +-- ResourceWarning
+
+
+
+shutil
+        SameFileError
+pickle
+        PickleError
+        PicklingError
+        UnpicklingError
+        RecursionError in case the depth is more than the settings - sys.setrecursionlimit()
+
+
+
